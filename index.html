@@ -73,7 +73,7 @@
   </head>
   <body>
     <div class="card">
-      <h1>Hi, CHAGIYA! ❤️</h1>
+      <h1>Hi, Love! ❤️</h1>
       <p>I have something to tell you...</p>
 
       <div class="heart">❤️</div>
@@ -87,5 +87,148 @@
         life brighter every single day. ❤️
       </p>
     </div>
+  </body>
+</html>
+https://marquezpolly14.github.io marquezpolly14.github.io
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Envelope ❤️</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      .envelope {
+        width: 320px;
+        height: 210px;
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      .body {
+        width: 100%;
+        height: 100%;
+        background: #ff6b81;
+        border-radius: 0 0 10px 10px;
+        position: absolute;
+        z-index: 2;
+      }
+
+      .flap {
+        position: absolute;
+        width: 100%;
+        height: 110px;
+        background: #ff4d6d;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top;
+        transition: 1s;
+        z-index: 4;
+      }
+
+      .letter {
+        position: absolute;
+        width: 90%;
+        height: 170px;
+        left: 5%;
+        top: 20px;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: 1s;
+        z-index: 1;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .letter h2 {
+        color: #ff3366;
+        margin-bottom: 10px;
+      }
+
+      .letter p {
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .open .flap {
+        transform: rotateX(180deg);
+      }
+
+      .open .letter {
+        transform: translateY(-120px);
+      }
+
+      .buttons {
+        display: flex;
+        gap: 15px;
+      }
+
+      button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: #ff3366;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #e6005c;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+
+      <div class="letter">
+        <h2>❤️ A Message For You ❤️</h2>
+        <p>
+          Hi CHAGIYA!<br /><br />
+          I just want you to know that...
+          <br /><br />
+          <b style="font-size: 22px; color: #ff3366"> I LOVE YOU SO MUCH ❤️ </b>
+          <br /><br />
+          You're my happiness, my peace, and my favorite person.
+        </p>
+      </div>
+
+      <div class="body"></div>
+    </div>
+
+    <div class="buttons">
+      <button onclick="openEnvelope()">📩 Open Envelope</button>
+      <button onclick="closeEnvelope()">📪 Close Envelope</button>
+    </div>
+
+    <script>
+      function openEnvelope() {
+        document.getElementById("envelope").classList.add("open");
+      }
+
+      function closeEnvelope() {
+        document.getElementById("envelope").classList.remove("open");
+      }
+    </script>
   </body>
 </html>

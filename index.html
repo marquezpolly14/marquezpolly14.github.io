@@ -3,135 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Love Heart</title>
+    <title>Glowing Clover Field</title>
 
     <style>
-      *{
-          margin:0;
-          padding:0;
-          box-sizing:border-box;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      body{
-          background:#111;
-          overflow:hidden;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          height:100vh;
-          font-family:Arial, sans-serif;
+      body {
+        overflow: hidden;
+        background: linear-gradient(to bottom, #031b08, #0d2e13, #145c20);
+        height: 100vh;
       }
 
-      #heart{
-          position:relative;
-          width:650px;
-          height:600px;
+      .clover {
+        position: absolute;
+        color: #32ff7e;
+        user-select: none;
+        animation:
+          float 5s ease-in-out infinite,
+          glow 2s ease-in-out infinite alternate;
       }
 
-      .word{
-          position:absolute;
-          color:#ff4d6d;
-          font-size:14px;
-          white-space:nowrap;
-          opacity:0;
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-15px) rotate(8deg);
+        }
+      }
+
+      @keyframes glow {
+        from {
           text-shadow:
-              0 0 5px #ff0000,
-              0 0 10px #ff0000,
-              0 0 18px #ff1a1a,
-              0 0 28px #ff3333,
-              0 0 40px #ff4d4d;
-
-          transition:opacity .5s;
-      }
-
-      .center{
-          position:absolute;
-          left:50%;
-          top:50%;
-          transform:translate(-50%,-50%);
-          color:white;
-          font-size:58px;
-          font-family:"Georgia", serif;
-          opacity:0;
-          text-align:center;
-
+            0 0 5px #32ff7e,
+            0 0 15px #32ff7e;
+        }
+        to {
           text-shadow:
-              0 0 8px #ff0000,
-              0 0 18px #ff0000,
-              0 0 35px #ff1a1a,
-              0 0 55px #ff3333,
-              0 0 80px #ff4d4d,
-
-          background:rgba(255,0,0,.12);
-          padding:18px 35px;
-          border-radius: 18px;
-          box-shadow:
-             0 0 20px rgba(255,0,0,.6),
-             0 0 45px rgba(255,0,0,.5),
-             0 0 80px rgba(255,0,0,.4);
-
-          transition:opacity 2s;
-
+            0 0 10px #7dff9d,
+            0 0 25px #7dff9d,
+            0 0 45px #7dff9d;
+        }
       }
     </style>
-  </head>         
+  </head>
 
   <body>
-    <div id="heart">
-      <div class="center" id="centerText">I Love you.</div>
-    </div>
-
     <script>
-      const heart = document.getElementById("heart");
-      const center = document.getElementById("centerText");
+      const total = 300;
 
-      let points = [];
+      for (let i = 0; i < total; i++) {
+        const c = document.createElement("div");
+        c.className = "clover";
 
-      // Heart equation
-      for (let t = 0; t < Math.PI * 2; t += 0.04) {
-        let x = 16 * Math.pow(Math.sin(t), 3);
-        let y =
-          13 * Math.cos(t) -
-          5 * Math.cos(2 * t) -
-          2 * Math.cos(3 * t) -
-          Math.cos(4 * t);
+        c.innerHTML = "🍀";
 
-        points.push({
-          x: x * 18 + 320,
-          y: -y * 18 + 290,
-        });
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.top = Math.random() * 100 + "vh";
+
+        c.style.fontSize = 35 + Math.random() * 35 + "px";
+
+        c.style.animationDelay = Math.random() * 5 + "s";
+        c.style.animationDuration = 4 + Math.random() * 3 + "s";
+
+        document.body.appendChild(c);
       }
-
-      // Random order for animation
-      points = points.sort(() => Math.random() - 0.5);
-
-      let i = 0;
-
-      let timer = setInterval(() => {
-        if (i >= points.length) {
-          clearInterval(timer);
-
-          center.style.opacity = 1;
-          return;
-        }
-
-        let p = points[i];
-
-        let span = document.createElement("span");
-        span.className = "word";
-        span.innerText = "I love you";
-
-        span.style.left = p.x + "px";
-        span.style.top = p.y + "px";
-
-        heart.appendChild(span);
-
-        requestAnimationFrame(() => {
-          span.style.opacity = 1;
-        });
-
-        i++;
-      }, 40);
     </script>
   </body>
 </html>
